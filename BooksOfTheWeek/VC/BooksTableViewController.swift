@@ -9,38 +9,65 @@
 import UIKit
 
 class BooksTableViewController: UITableViewController {
-
+    
+    
+    private let jsonUrl = "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=BSQbcGQ0ccrDtyWZJQzY8gpV4sbDAP17"
+    
+    
+    private var books: [Book] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        fetchData()
     }
-
+    
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return books.count
     }
-
-    /*
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as! BookCell
+        
+        let book = books[indexPath.row]
+        
+      //  cell.textLabel?.text = "Hey"
+        //books[indexPath.row].title// Configure the cell...
+        
         return cell
     }
-    */
+    
+    
+    func fetchData() {
+        
+        guard let url = URL(string: jsonUrl) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+    
+            guard let data = data else { return }
+            
+            do {
+                let jsonResult =  try JSONDecoder().decode(BooksResponse.self, from: data)
+                
+                self.books = jsonResult.results.books
+                for book in self.books {
+                    print(book.author ?? "No author")
+                    print(book.title ?? "No title")
+                    print(book.description ?? "No description")
+                    print(book.book_image ?? "")
+                    print("---")
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            } catch let error {
+                print (error.localizedDescription)
+            }
+        }.resume()
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

@@ -14,6 +14,8 @@
 		7C555E2123A2A1860025D33F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C555E1F23A2A1860025D33F /* LaunchScreen.storyboard */; };
 		7C555E2923A2A1A20025D33F /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C555E2823A2A1A20025D33F /* Books.swift */; };
 		7C555E2B23A2A8B10025D33F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C555E2A23A2A8B10025D33F /* MainViewController.swift */; };
+		7CA50CBF23A79B0800E32EB9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA50CBE23A79B0800E32EB9 /* NetworkManager.swift */; };
+		7CA50CC123A7AF7A00E32EB9 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA50CC023A7AF7A00E32EB9 /* BookCell.swift */; };
 		7CA67C6223A520E0000B6347 /* BooksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA67C6123A520E0000B6347 /* BooksTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 		7C555E2223A2A1860025D33F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C555E2823A2A1A20025D33F /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		7C555E2A23A2A8B10025D33F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		7CA50CBE23A79B0800E32EB9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7CA50CC023A7AF7A00E32EB9 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		7CA67C6123A520E0000B6347 /* BooksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,11 +64,13 @@
 		7C555E1323A2A17F0025D33F /* BooksOfTheWeek */ = {
 			isa = PBXGroup;
 			children = (
-				7C555E1423A2A17F0025D33F /* AppDelegate.swift */,
 				7C555E2823A2A1A20025D33F /* Books.swift */,
-				7C555E1623A2A17F0025D33F /* SceneDelegate.swift */,
-				7C555E1A23A2A17F0025D33F /* Main.storyboard */,
+				7CA50CBE23A79B0800E32EB9 /* NetworkManager.swift */,
 				7C555E2E23A2A9300025D33F /* VC */,
+				7C555E1423A2A17F0025D33F /* AppDelegate.swift */,
+				7C555E1623A2A17F0025D33F /* SceneDelegate.swift */,
+				7CA50CC023A7AF7A00E32EB9 /* BookCell.swift */,
+				7C555E1A23A2A17F0025D33F /* Main.storyboard */,
 				7C555E1D23A2A1860025D33F /* Assets.xcassets */,
 				7C555E1F23A2A1860025D33F /* LaunchScreen.storyboard */,
 				7C555E2223A2A1860025D33F /* Info.plist */,
@@ -152,8 +158,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA50CBF23A79B0800E32EB9 /* NetworkManager.swift in Sources */,
 				7C555E2923A2A1A20025D33F /* Books.swift in Sources */,
 				7CA67C6223A520E0000B6347 /* BooksTableViewController.swift in Sources */,
+				7CA50CC123A7AF7A00E32EB9 /* BookCell.swift in Sources */,
 				7C555E1523A2A17F0025D33F /* AppDelegate.swift in Sources */,
 				7C555E1723A2A17F0025D33F /* SceneDelegate.swift in Sources */,
 				7C555E2B23A2A8B10025D33F /* MainViewController.swift in Sources */,

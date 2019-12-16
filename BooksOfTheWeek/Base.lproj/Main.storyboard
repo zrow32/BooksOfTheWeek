@@ -7,22 +7,58 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Books Table View Controller-->
         <scene sceneID="fTz-pw-YvI">
             <objects>
-                <tableViewController id="nex-Yk-42J" sceneMemberID="viewController">
+                <tableViewController id="nex-Yk-42J" customClass="BooksTableViewController" customModule="BooksOfTheWeek" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HZb-OZ-VzN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" id="5pX-79-aId">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" rowHeight="110" id="5pX-79-aId" customClass="BookCell" customModule="BooksOfTheWeek" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5pX-79-aId" id="FZo-mf-Hdx">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B22-qt-k8q">
+                                            <rect key="frame" x="16" y="10" width="76" height="90"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="90" id="RBM-LL-0Rc"/>
+                                                <constraint firstAttribute="width" secondItem="B22-qt-k8q" secondAttribute="height" multiplier="82:97" id="Sgi-bd-SDh"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZW0-Xc-iPJ">
+                                            <rect key="frame" x="108" y="11" width="270" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNg-HK-6FB">
+                                            <rect key="frame" x="108" y="40" width="270" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DNg-HK-6FB" firstAttribute="leading" secondItem="B22-qt-k8q" secondAttribute="trailing" constant="16" id="3jU-b9-p7m"/>
+                                        <constraint firstItem="ZW0-Xc-iPJ" firstAttribute="leading" secondItem="B22-qt-k8q" secondAttribute="trailing" constant="16" id="7ko-lF-6z4"/>
+                                        <constraint firstItem="B22-qt-k8q" firstAttribute="centerY" secondItem="FZo-mf-Hdx" secondAttribute="centerY" id="872-fF-Xye"/>
+                                        <constraint firstItem="ZW0-Xc-iPJ" firstAttribute="top" secondItem="FZo-mf-Hdx" secondAttribute="topMargin" id="Q0J-08-YYY"/>
+                                        <constraint firstItem="B22-qt-k8q" firstAttribute="leading" secondItem="FZo-mf-Hdx" secondAttribute="leading" constant="16" id="VfP-Ik-xet"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="DNg-HK-6FB" secondAttribute="trailing" constant="16" id="VmS-d1-MTu"/>
+                                        <constraint firstItem="DNg-HK-6FB" firstAttribute="top" secondItem="ZW0-Xc-iPJ" secondAttribute="bottom" constant="8" id="bfo-qs-ziS"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ZW0-Xc-iPJ" secondAttribute="trailing" constant="16" id="eHH-UD-eRG"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="authorLabel" destination="ZW0-Xc-iPJ" id="rNr-HX-2WR"/>
+                                    <outlet property="bookImageView" destination="B22-qt-k8q" id="Fsb-hv-a26"/>
+                                    <outlet property="titleLabel" destination="DNg-HK-6FB" id="H6H-S7-pgh"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -34,7 +70,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F5T-du-AyZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142" y="75"/>
+            <point key="canvasLocation" x="3140.579710144928" y="75"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="DJt-hN-S6z">
@@ -52,8 +88,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="booksButtonTapped" destination="50S-Eh-6pD" eventType="touchUpInside" id="nCn-XR-MnK"/>
-                                    <segue destination="nex-Yk-42J" kind="show" identifier="goToBooks" id="sat-Xh-ogk"/>
+                                    <action selector="booksButtonTapped" destination="50S-Eh-6pD" eventType="touchUpInside" id="S6r-cY-NbO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHF-TS-Kpb">
@@ -69,6 +104,9 @@
                         <viewLayoutGuide key="safeArea" id="4qR-sg-sCC"/>
                     </view>
                     <navigationItem key="navigationItem" title="MainVC" id="qYz-Uh-25Q"/>
+                    <connections>
+                        <segue destination="nex-Yk-42J" kind="show" identifier="goToBooks" id="2MR-ut-K0F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5z-s3-Hk4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
