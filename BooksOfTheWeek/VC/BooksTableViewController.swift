@@ -19,6 +19,8 @@ class BooksTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = 110
+        
         fetchData()
     }
     
@@ -32,8 +34,9 @@ class BooksTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as! BookCell
         
         let book = books[indexPath.row]
+        cell.configure(with: book)
         
-      //  cell.textLabel?.text = "Hey"
+        //  cell.textLabel?.text = "Hey"
         //books[indexPath.row].title// Configure the cell...
         
         return cell
@@ -45,7 +48,7 @@ class BooksTableViewController: UITableViewController {
         guard let url = URL(string: jsonUrl) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-    
+            
             guard let data = data else { return }
             
             do {
@@ -53,11 +56,11 @@ class BooksTableViewController: UITableViewController {
                 
                 self.books = jsonResult.results.books
                 for book in self.books {
-                    print(book.author ?? "No author")
-                    print(book.title ?? "No title")
-                    print(book.description ?? "No description")
-                    print(book.book_image ?? "")
-                    print("---")
+                      print(book.author ?? "No author")
+//                    print(book.title ?? "No title")
+//                    print(book.description ?? "No description")
+//                    print(book.book_image ?? "")
+//                    print("---")
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }

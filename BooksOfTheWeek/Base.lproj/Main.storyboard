@@ -67,10 +67,29 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ELX-Rl-lLx"/>
+                    <connections>
+                        <segue destination="edf-s7-6Nu" kind="show" id="VXg-rE-y2m"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F5T-du-AyZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3140.579710144928" y="75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yZD-Nc-ncw">
+            <objects>
+                <viewController id="edf-s7-6Nu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PD1-XA-xVu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="I9v-fj-Vg2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1pw-pT-lCp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bAC-T1-SOf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4044" y="75"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="DJt-hN-S6z">
