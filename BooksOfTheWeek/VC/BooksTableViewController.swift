@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class BooksTableViewController: UITableViewController {
     
@@ -23,7 +24,7 @@ class BooksTableViewController: UITableViewController {
         
         tableView.rowHeight = 110
         
-        fetchData()
+        fetchWithAlamofire ()
     }
     
     // MARK: - Table view data source
@@ -38,43 +39,38 @@ class BooksTableViewController: UITableViewController {
         let book = books[indexPath.row]
         cell.configure(with: book)
         
-        //  cell.textLabel?.text = "Hey"
-        //books[indexPath.row].title// Configure the cell...
-        
         return cell
     }
     
     
-    func fetchData() {
-        
+    func fetchWithAlamofire () {
         guard let url = URL(string: jsonUrl) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        request(url).validate().responseJSON { dataResponse in
             
-            guard let data = data else { return }
-            
-            do {
-                let jsonResult =  try JSONDecoder().decode(BooksResponse.self, from: data)
+            switch dataResponse.result {
+            case .success(let value):
+                print(value)
+                guard let jsonData = value as? Array<[String : Any]> else { return }
+                print (jsonData)
                 
-                self.books = jsonResult.results.books
-                for book in self.books {
-                    print(book.author ?? "No author")
-                    print(book.title ?? "No title")
-                    print(book.description ?? "No description")
-                    print(book.book_image ?? "")
-                    print("---")
-                    
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+                for dictBook in jsonData {
+                    let book = Book(dictBook: dictBook)
+                    self.books.append(book)
                 }
-            } catch let error {
-                print (error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error)
             }
-        }.resume()
+            
+        }
+        
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("---")
         print("This cell # \(indexPath.row) was tapped")

@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let booksVC = segue.destination as! BooksTableViewController
-        booksVC.fetchData()
+        //     booksVC.fetchData()  commented b/c Alamofire code
         
     }
     
